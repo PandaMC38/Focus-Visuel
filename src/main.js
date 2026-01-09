@@ -162,12 +162,9 @@ function openSettings() {
         // Do not show here automatically if called during splash phase, handled by timeout
     });
 
-    // Prevent closing, just hide
+    // Close entire app when dashboard is closed
     settingsWindow.on('close', (event) => {
-        if (!app.isQuiting) {
-            event.preventDefault();
-            settingsWindow.hide();
-        }
+        app.quit();
     });
 }
 
