@@ -1,37 +1,3 @@
-3. **Activer/Désactiver** :
-   - Utilisez le gros interrupteur dans le tableau de bord.
-   - Ou utilisez le raccourci clavier `Ctrl+Shift+F` (modifiable).
-4. **Quitter** : Faites un clic droit sur l'icône dans la barre des tâches (en bas à droite) et choisissez "Quitter".
-
----
-
-## 🇺🇸 English
-
-### 📖 About
-**Focus Visuel** is a desktop application designed to assist individuals with **ADHD**, **dyslexia**, or anyone looking to reduce visual strain upon large screens.
-
-It creates a **dark overlay** across all your monitors, leaving only a **clear reading band** that follows your mouse cursor. This isolates you from on-screen distractions and guides your eyes, acting like a digital reading ruler.
-
-### ✨ Key Features
-- **Dynamic Reading Ruler**: A horizontal band follows your cursor in real-time.
-- **Multi-Screen Support**: Automatically detects and manages all connected monitors. The focus band appears only on the active screen, dimming the others for total immersion.
-- **Premium Dashboard**: A modern, Glassmorphism-styled interface for full control.
-- **Fully Customizable**: Adjust the band height and background opacity to suit your needs.
-- **Keyboard Shortcuts**: Toggle the tool instantly (Default: `Ctrl+Shift+F`).
-- **Stealth Mode**: Silent launch with no terminal window, accessible via the system tray.
-
-### 🚀 Installation
-1. **Prerequisites**: Ensure you have [Node.js](https://nodejs.org/) installed.
-2. **Download**: Clone this repository or download the files.
-   ```bash
-   git clone https://github.com/your-username/focus-visuel.git
-   ```
-3. **Install Dependencies**:
-   Run `npm install` in your terminal within the project folder.
-
-### 🎮 How to Use
-1. **Launch**: Double-click the **`Lancer Sans Terminal.vbs`** file for a clean, silent start.
-2. **Configure**: The app opens to the Dashboard. Adjust your settings here.
 # 👁️ Focus Visuel
 
 > **L'outil essentiel pour améliorer la lecture et la concentration sur écran.**  
