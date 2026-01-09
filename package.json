@@ -1,0 +1,20 @@
+{
+  "name": "focus-visuel",
+  "version": "1.0.0",
+  "description": "Outil d'accessibilité pour la lecture (overlay)",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "keywords": [
+    "accessibility",
+    "reading",
+    "focus",
+    "overlay"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^28.0.0"
+  }
+}

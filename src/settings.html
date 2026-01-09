@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tableau de Bord - Focus Visuel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #121212;
+            --card-bg: rgba(30, 30, 30, 0.6);
+            --accent-color: #5b42f3;
+            --text-primary: #ffffff;
+            --text-secondary: #aaaaaa;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 40px;
+            background-color: var(--bg-color);
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(91, 66, 243, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(0, 212, 255, 0.1) 0%, transparent 40%);
+            color: var(--text-primary);
+            user-select: none;
+            overflow: hidden;
+            /* No scrollbars usually */
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #fff, #aaa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            font-size: 0.9rem;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 24px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Controls */
+        .control-group {
+            margin-bottom: 24px;
+        }
+
+        .control-group:last-child {
+            margin-bottom: 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .value-display {
+            color: var(--accent-color);
+            font-weight: 600;
+            background: rgba(91, 66, 243, 0.1);
+            padding: 2px 8px;
+            border-radius: 6px;
+        }
+
+        /* Modern Range Slider */
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            outline: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(91, 66, 243, 0.5);
+            border: 2px solid #fff;
+            transition: transform 0.1s;
+        }
+
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
+        }
+
+        /* Shortcut Input */
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            text-align: center;
+            transition: border-color 0.2s;
+            box-sizing: border-box;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        /* Toggle Switch */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 26px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.1);
+            -webkit-transition: .4s;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.slider {
+            background-color: var(--accent-color);
+        }
+
+        input:checked+.slider:before {
+            -webkit-transform: translateX(24px);
+            -ms-transform: translateX(24px);
+            transform: translateX(24px);
+        }
+
+        /* Status & Toggles */
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            background: rgba(46, 204, 113, 0.2);
+            color: #2ecc71;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .status-badge.inactive {
+            background: rgba(255, 255, 255, 0.1);
+            color: #888;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Tableau de Bord</h1>
+    <div class="subtitle">Gérez votre expérience de lecture immersive.</div>
+
+    <div class="dashboard-grid">
+        <!-- Visual Settings -->
+        <div class="card">
+            <div class="card-title">
+                <span>🎨</span> Apparence
+            </div>
+
+            <div class="control-group">
+                <label>
+                    Hauteur de la zone
+                    <span id="height-value" class="value-display">100px</span>
+                </label>
+                <input type="range" id="height-range" min="30" max="400" value="100">
+            </div>
+
+            <div class="control-group">
+                <label>
+                    Opacité du fond
+                    <span id="opacity-value" class="value-display">50%</span>
+                </label>
+                <input type="range" id="opacity-range" min="10" max="95" value="50">
+            </div>
+        </div>
+
+        <!-- Shortcuts & Application -->
+        <div class="card">
+            <div class="card-title">
+                <span>⚡</span> Contrôles
+            </div>
+
+            <div class="control-group">
+                <label style="display: flex; align-items: center; cursor: pointer;">
+                    Activer Focus
+                    <label class="switch">
+                        <input type="checkbox" id="master-toggle" checked>
+                        <span class="slider"></span>
+                    </label>
+                </label>
+            </div>
+
+            <div class="control-group">
+                <label>
+                    Raccourci d'activation
+                </label>
+                <input type="text" id="shortcut-input" placeholder="Cliquez pour définir..." readonly>
+                <div style="margin-top: 8px; font-size: 0.75rem; color: #666; text-align: center;">
+                    Cliquez puis appuyez sur vos touches
+                </div>
+            </div>
+
+            <div class="control-group"
+                style="margin-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 20px;">
+                <label>État du service <span id="status-text" class="status-badge">Actif</span></label>
+            </div>
+        </div>
+    </div>
+
+    <script src="settings.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background: transparent;
+}
+
+.mask {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    background-color: #000;
+    opacity: 0.5;
+    transition: opacity 0.2s ease; /* Smooth opacity change */
+    /* Remove transition for top/height to avoid lag in following mouse, 
+       or keep it very short if polling is slow. 
+       Main process polling is ~60fps, so we want instant updates. */
+    pointer-events: none; /* Ensure clicks pass through if the window is interactive (though ignoreMouseEvents handles this) */
+}
+
+#mask-top {
+    top: 0;
+}
+
+#mask-bottom {
+    bottom: 0;
+}

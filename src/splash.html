@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Focus Visuel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #0f0f11;
+            /* Very dark/black */
+            color: white;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+            user-select: none;
+        }
+
+        .logo-container {
+            text-align: center;
+            animation: fadeIn 1s ease-out;
+        }
+
+        h1 {
+            font-weight: 800;
+            font-size: 2.5rem;
+            margin: 0;
+            background: linear-gradient(135deg, #a8c0ff, #3f2b96);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+        }
+
+        p {
+            color: #888;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            font-weight: 400;
+        }
+
+        .loader {
+            margin-top: 40px;
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            border-top-color: #5b42f3;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .version {
+            position: absolute;
+            bottom: 20px;
+            color: #444;
+            font-size: 0.75rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="logo-container">
+        <h1>Focus Visuel</h1>
+        <p>Concentration & Accessibilité</p>
+    </div>
+    <div class="loader"></div>
+    <div class="version">v1.0.0</div>
+</body>
+
+</html>
